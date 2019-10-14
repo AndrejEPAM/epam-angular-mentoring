@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #414452;
+    color: #fff;
+    padding: 16px;
+    align-items: center;
+    display: flex;
+
+    &__menu-points {
+        margin: 0 10px;
+        display: flex;
+    }
+}
+
+.user {
+    padding: 0 20px;
+
+    & > span { margin-left: 6px;}
+}
+
+.signing {
+    padding: 0 20px;
+
+    & > span { margin-left: 6px;}
+}
