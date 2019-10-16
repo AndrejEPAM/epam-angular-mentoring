@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="searchbar">
+    <input type="text" name="search">
+    <button class="btn btn-secondary">Add course</button>
+  </div>
+
+  <div class="add-course">
+    <button class="btn btn-primary">Add course</button>
+  </div>
+
+  <app-course-item *ngFor="let course of courses" [course]=course></app-course-item>
+  <div class="load-more">
+      <label>LOAD MORE</label>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.btn-primary {
+    background-color: $dark-sky-blue;
+    border-color: $dark-sky-blue;
+
+    &:hover {
+        background-color: $hover-dark-sky-blue;
+        border-color: $hover-dark-sky-blue;
+    }
+}
+
+.btn-secondary {
+    background-color: $sick-green;
+    border-color: $sick-green;
+
+    &:hover {
+        background-color: $hover-sick-green;
+        border-color: $hover-sick-green;
+    }
+}

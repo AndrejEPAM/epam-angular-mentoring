@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FakeLogoComponent } from './fake-logo/fake-logo.component';
-import { CoursesComponent } from './courses-list/courses.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CourseItemComponent } from './courses-list/course-item/course-item.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { CoursesComponent } from './courses-list/courses.component';
     HeaderComponent,
     FooterComponent,
     FakeLogoComponent,
-    CoursesComponent
+    BreadcrumbComponent,
+    CoursesListComponent,
+    CourseItemComponent
   ],
   imports: [
     BrowserModule

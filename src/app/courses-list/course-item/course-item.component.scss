@@ -1,0 +1,37 @@
+@import '../../content/scss/01-settings/all_settings';
+
+.container {
+    background-color: grey;
+    margin: 24px 0;
+    padding: 24px 10px 24px 24px;
+    border-radius: 5px;
+    display: flex;
+
+}
+
+.left-side {
+
+    &__upper-row {
+        display: flex;
+        align-items: flex-end;
+
+        &--labels {
+            margin-left: 20px;
+            align-content: flex-end;
+        }
+    }
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+label {
+    color: $font-greyed-out;
+}
+
+.btn {
+    margin: 0 12px;
+}

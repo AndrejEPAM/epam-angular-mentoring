@@ -1,8 +1,10 @@
-footer {
-    background-color: #414452;
-    color: #c0c3ce;
+@import '../content/scss/01-settings/all_settings';
 
-    position: fixed;
+footer {
+    background-color: $dark-menu;
+    color: $border-grey;
+
+    display: block;
     bottom: 0;
     left: 0;
     width: 100%;

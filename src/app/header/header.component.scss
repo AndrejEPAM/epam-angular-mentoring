@@ -1,5 +1,7 @@
+@import '../content/scss/01-settings/all_settings';
+
 .navbar {
-    background-color: #414452;
+    background-color: $dark-menu;
     color: #fff;
     padding: 16px;
     align-items: center;

@@ -1,0 +1,49 @@
+@import '../content/scss/01-settings/all_settings';
+
+:host {
+    background-color: red;
+}
+
+.searchbar {
+    display: flex;
+}
+
+.add-course {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0 5px;
+}
+
+input[type='text'] {
+    background-image: url('../../assets/search.svg');
+    background-position: 7px 14px;
+    background-repeat: no-repeat;
+
+    border: 1px solid $border-grey;
+    width: 360px;
+    padding: 10px 35px;
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 1.2em;
+}
+
+.load-more {
+    background-color: #c2c2c2;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 6px;
+
+    & > label {
+        margin-bottom: 0;
+        padding: 12px 0;
+    }
+}
+
+.btn-primary {
+    padding: 6px 24px 6px 48px;
+}
+
+.btn-secondary {
+    padding: 10px 24px;
+    font-size: 18px;
+}
