@@ -1,23 +1,22 @@
 @import '../../content/scss/01-settings/all_settings';
 
 .container {
-    background-color: grey;
+    background-color: #fff;
     margin: 24px 0;
     padding: 24px 10px 24px 24px;
     border-radius: 5px;
     display: flex;
-
 }
 
 .left-side {
-
     &__upper-row {
         display: flex;
         align-items: flex-end;
 
-        &--labels {
+        & > label {
+            display: absolute;
+            right: 0;
             margin-left: 20px;
-            align-content: flex-end;
         }
     }
 }

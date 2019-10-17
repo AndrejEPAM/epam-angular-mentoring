@@ -1,9 +1,5 @@
 @import '../content/scss/01-settings/all_settings';
 
-:host {
-    background-color: red;
-}
-
 .searchbar {
     display: flex;
 }
@@ -11,7 +7,7 @@
 .add-course {
     display: flex;
     justify-content: flex-end;
-    margin: 20px 0 5px;
+    margin: 20px 0;
 }
 
 input[type='text'] {
@@ -28,7 +24,7 @@ input[type='text'] {
 }
 
 .load-more {
-    background-color: #c2c2c2;
+    background-color: #fff;
     text-align: center;
     margin-bottom: 20px;
     border-radius: 6px;
