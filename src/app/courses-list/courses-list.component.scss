@@ -1,5 +1,9 @@
 @import '../content/scss/01-settings/all_settings';
 
+.container {
+  height: 100%;
+}
+
 .searchbar {
     display: flex;
 }

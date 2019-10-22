@@ -1,10 +1,9 @@
 @import '../content/scss/01-settings/all_settings';
-
-footer {
+:host {
     background-color: $dark-menu;
     color: $border-grey;
 
-    display: block;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
