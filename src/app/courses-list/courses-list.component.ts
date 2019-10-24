@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './course.model';
 import { Courses } from './courses.helper';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -10,11 +11,10 @@ import { Courses } from './courses.helper';
 export class CoursesListComponent implements OnInit {
   courses: Course[] = [];
 
-  constructor() { }
+  constructor(private coursesService: CoursesService) { }
 
   ngOnInit() {
-    this.courses = Courses;
-    console.table(this.courses);
+    this.courses = this.coursesService.getCourses();
   }
 
 }

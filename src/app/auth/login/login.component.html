@@ -1,0 +1,27 @@
+<div class="menu">
+  <form class="content" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="title">
+      <span>Login</span>
+      <span class="error-message" *ngIf="!loginForm">Wrong e-mail or password</span>
+    </div>
+
+    <!-- E-mail -->
+    <div class="email">
+      <label>E-mail:</label>
+      <label>*requied</label>
+      <p><input type="text" name="email" formControlName="email"></p>
+    </div>
+
+    <!-- Password -->
+    <div class="password">
+      <label>Password:</label>
+      <label>*requied</label>
+      <p><input type="password" name="password" formControlName="password"></p>
+    </div>
+
+    <div class="bottom-row">
+      <span>Forgot password?</span>
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+    </div>
+  </form>
+</div>

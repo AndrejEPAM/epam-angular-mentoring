@@ -1,17 +1,21 @@
 <nav class="navbar navbar-dark">
+  <a routerLink="courses">
     <div class="navbar__logo">
-        <img src="../../assets/logo.svg" alt="video course logo">
+      <img src="../../assets/logo.svg" alt="video course logo">
+    </div>
+  </a>
+
+  <div class="navbar__menu-points">
+    <div class="user">
+      <img src="../../assets/ic-user.svg">
+      <span>User</span>
     </div>
 
-    <div class="navbar__menu-points">
-        <div class="user">
-            <img src="../../assets/ic-user.svg">
-            <span>User</span>
-        </div>
-
-        <div class="signing">
-            <img src="../../assets/ic-exit.svg">
-            <span>Sign in</span>
-        </div>
+    <div class="signing">
+      <a routerLink="login">
+        <img src="../../assets/ic-exit.svg">
+        <span>Sign in</span>
+      </a>
     </div>
+  </div>
 </nav>
