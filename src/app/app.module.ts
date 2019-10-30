@@ -8,6 +8,9 @@ import { FakeLogoComponent } from './fake-logo/fake-logo.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CourseItemComponent } from './courses-list/course-item/course-item.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AppRoutingModule} from './app.routing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +20,13 @@ import { CourseItemComponent } from './courses-list/course-item/course-item.comp
     FakeLogoComponent,
     BreadcrumbComponent,
     CoursesListComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
