@@ -1,12 +1,12 @@
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -16,16 +16,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-mentoring-homework'`, () => {
+  it(`should have as title 'Angular Mentoring Homework'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-mentoring-homework');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-mentoring-homework app is running!');
+    expect(app.title).toEqual('Angular Mentoring Homework');
   });
 });
