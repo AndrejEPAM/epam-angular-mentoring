@@ -36,7 +36,7 @@ describe('CourseItemComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should emit course id when delete button clicked', () => {
+  it('should emit course id when delete button clicked', () => {
     // spy on event emitter
     spyOn(component.deleteClick, 'emit');
 

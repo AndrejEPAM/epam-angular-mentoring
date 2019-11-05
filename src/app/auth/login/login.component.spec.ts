@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { LoginComponent } from "./login.component";
+import { LoginComponent } from './login.component';
 
-describe("LoginComponent", () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -20,11 +20,11 @@ describe("LoginComponent", () => {
     fixture.detectChanges();
   }));
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it("form is invalid when empty", () => {
+  it('form is invalid when empty', () => {
     expect(component.loginForm.valid).toBeFalsy();
   });
 });
