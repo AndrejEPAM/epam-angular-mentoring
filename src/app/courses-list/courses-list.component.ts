@@ -9,7 +9,15 @@ import { CoursesService } from './courses.service';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-  courses: Course[] = [];
+  courses: Course[] = [
+    {
+      id: 53232,
+      title: 'Video Course #01',
+      creationDate: '01, October, 2019',
+      duration: '1h 3 min',
+      description: ''
+    }
+  ];
 
   constructor(private coursesService: CoursesService) { }
 
