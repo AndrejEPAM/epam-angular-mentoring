@@ -39,11 +39,11 @@ describe('CoursesListComponent', () => {
     component = fixture.componentInstance;
   });
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('#ngOnInit should call coursesService and set courses', () => {
+  it('#ngOnInit should call coursesService and set courses', () => {
     const service = TestBed.get(CoursesService);
     const getCoursesSpy = spyOn(service, 'getCourses').and.returnValue(mockData);
     fixture.detectChanges();

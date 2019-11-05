@@ -1,9 +1,18 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { CourseItemComponent } from './course-item.component';
+import { Course } from '../course.model';
+
+const mockCourse: Course =
+{
+  id: 53232,
+  title: 'TITLE',
+  creationDate: '01, October, 2019',
+  duration: 'DUR',
+  description: 'DESC'
+}
+
 
 describe('CourseItemComponent', () => {
   let component: CourseItemComponent;
@@ -11,18 +20,31 @@ describe('CourseItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseItemComponent ]
+      declarations: [CourseItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseItemComponent);
     component = fixture.componentInstance;
+    component.course = mockCourse;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  fit('should emit course id when delete button clicked', () => {
+    // spy on event emitter
+    spyOn(component.deleteClick, 'emit');
+
+    // trigger the click
+    const nativeElement = fixture.nativeElement;
+    const button = nativeElement.querySelector('.delete');
+    button.dispatchEvent(new Event('click'));
+
+    expect(component.deleteClick.emit).toHaveBeenCalledWith(mockCourse.id);
+  })
 });
