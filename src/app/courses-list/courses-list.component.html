@@ -8,8 +8,17 @@
     <button class="btn btn-primary">Add course</button>
   </div>
 
-  <app-course-item *ngFor="let course of courses" [course]=course (deleteClick)="logOnDelete($event)"></app-course-item>
-  <div class="load-more">
-    <label>LOAD MORE</label>
+  <div class="courses" *ngIf="courses.length > 0; else noCourse">
+    <app-course-item *ngFor="let course of courses" [course]=course (deleteClick)="logOnDelete($event)">
+    </app-course-item>
+    <div class="else-bar">
+      <label>LOAD MORE</label>
+    </div>
   </div>
+
+  <ng-template #noCourse>
+    <div class="else-bar">
+      <label>No data. Feel free to add new course!</label>
+    </div>
+  </ng-template>
 </div>
