@@ -22,4 +22,8 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`#footer should be 'Copyright © Videocourses. All rights reserved.'`, () => {
+    expect(component.footerText).toEqual('Copyright © Videocourses. All rights reserved.');
+  });
 });
