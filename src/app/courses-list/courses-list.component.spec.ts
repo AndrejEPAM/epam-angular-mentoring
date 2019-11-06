@@ -9,8 +9,8 @@ const mockData = [
   {
     id: 53232,
     title: 'TITLE',
-    creationDate: '01, October, 2019',
-    duration: 'DUR',
+    creationDate: new Date('December 24, 1993'),
+    duration: 4,
     description: 'DESC'
   }
 ];

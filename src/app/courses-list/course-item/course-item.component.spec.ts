@@ -8,8 +8,8 @@ const mockCourse: Course =
 {
   id: 53232,
   title: 'TITLE',
-  creationDate: '01, October, 2019',
-  duration: 'DUR',
+  creationDate: new Date('01, October, 2019'),
+  duration: 6,
   description: 'DESC'
 }
 
