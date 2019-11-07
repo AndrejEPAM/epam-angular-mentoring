@@ -1,9 +1,14 @@
-<div class="container">
+<div class="container" [ngClass]="{topRated: course.topRated === true}">
   <div class="left-side">
     <div class="left-side__upper-row">
-      <h3><strong>{{ course?.title}}</strong></h3>
-      <label> {{ course?.duration }} </label>
-      <label> {{ course?.creationDate }} </label>
+      <h3><strong>{{ course?.title | uppercase}}</strong></h3>
+      <img *ngIf="course.topRated === true" class="imgTopRated"
+        src="https://img.icons8.com/flat_round/64/000000/star--v3.png">
+      <label> <img class="item-icons"
+          src="https://img.icons8.com/pastel-glyph/64/000000/clock.png">{{ course?.duration | duration}}
+      </label>
+      <label> <img class="item-icons"
+          src="https://img.icons8.com/android/24/000000/calendar.png">{{ course?.creationDate | date}} </label>
     </div>
     <p>{{ course?.description }}</p>
   </div>
@@ -12,5 +17,4 @@
     <button class="btn btn-primary">Edit</button>
     <button class="btn btn-primary delete" (click)="onDelete(course?.id)">Delete</button>
   </div>
-
 </div>

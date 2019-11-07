@@ -9,8 +9,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CourseItemComponent } from './courses-list/course-item/course-item.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AppRoutingModule} from './app.routing';
+import { AppRoutingModule } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DurationPipe } from './content/pipes/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BreadcrumbComponent,
     CoursesListComponent,
     CourseItemComponent,
-    LoginComponent
+    LoginComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

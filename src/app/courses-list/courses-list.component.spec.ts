@@ -11,7 +11,8 @@ const mockData = [
     title: 'TITLE',
     creationDate: new Date('December 24, 1993'),
     duration: 4,
-    description: 'DESC'
+    description: 'DESC',
+    topRated: false
   }
 ];
 const mockCoursesService: Partial<CoursesService> = {

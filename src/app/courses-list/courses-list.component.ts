@@ -15,10 +15,6 @@ export class CoursesListComponent implements OnInit {
 
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
-    this.courses = this.courses.map((course: Course) => {
-      course.creationDate = moment(course.creationDate).format('MMMM DD YYYY');
-      return course;
-    });
   }
 
   logOnDelete(id) {

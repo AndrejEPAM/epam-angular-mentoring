@@ -9,7 +9,8 @@ const mockCourse: Course = {
   title: 'TITLE',
   creationDate: new Date('01, October, 2019'),
   duration: 6,
-  description: 'DESC'
+  description: 'DESC',
+  topRated: false
 };
 
 
