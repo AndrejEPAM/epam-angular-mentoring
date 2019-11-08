@@ -1,4 +1,5 @@
-<div class="container" [ngClass]="{topRated: course.topRated === true}">
+<div class="container" [ngClass]="{topRated: course.topRated === true}" courseItemDateChecker
+  [courseCreationDate]={{course?.creationDate}}>
   <div class="left-side">
     <div class="left-side__upper-row">
       <h3><strong>{{ course?.title | uppercase}}</strong></h3>

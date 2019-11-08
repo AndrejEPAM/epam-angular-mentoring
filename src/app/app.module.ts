@@ -11,7 +11,7 @@ import { CourseItemComponent } from './courses-list/course-item/course-item.comp
 import { LoginComponent } from './auth/login/login.component';
 import { AppRoutingModule } from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DurationPipe } from './content/pipes/duration.pipe';
+import { DurationPipe } from './content/pipes/duration/duration.pipe';
 
 @NgModule({
   declarations: [
