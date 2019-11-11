@@ -10,8 +10,11 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CourseItemComponent } from './courses-list/course-item/course-item.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AppRoutingModule } from './app.routing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DurationPipe } from './content/pipes/duration/duration.pipe';
+import { CourseItemDateCheckerDirective } from './content/directives/CourseItemDateChecker/CourseItemDateChecker.directive';
+import { FilterPipe } from './content/pipes/filter/filter.pipe';
+import { OrderByPipe } from './content/pipes/orderBy/orderBy.pipe';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,16 @@ import { DurationPipe } from './content/pipes/duration/duration.pipe';
     CoursesListComponent,
     CourseItemComponent,
     LoginComponent,
-    DurationPipe
+    DurationPipe,
+    FilterPipe,
+    CourseItemDateCheckerDirective,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

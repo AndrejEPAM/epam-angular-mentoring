@@ -1,6 +1,9 @@
 <div class="container">
   <div class="searchbar">
-    <input type="text" name="search">
+    <input type="text" #filterSearch [(ngModel)]="term">
+    <ul class="search-result" *ngIf="filterSearch.length > 0">
+      <li *ngFor="let course of courses" value="course.title">{{course.title}}</li>
+    </ul>
     <button class="btn btn-secondary">Search</button>
   </div>
 
@@ -9,7 +12,8 @@
   </div>
 
   <div class="courses" *ngIf="courses.length > 0; else noCourse">
-    <app-course-item *ngFor="let course of courses" [course]=course (deleteClick)="logOnDelete($event)">
+    <app-course-item *ngFor="let course of courses | orderBy" [course]=course (deleteClick)="logOnDelete($event)"
+      appCourseItemDateChecker>
     </app-course-item>
     <div class="else-bar">
       <label>LOAD MORE</label>
