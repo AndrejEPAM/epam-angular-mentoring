@@ -1,3 +1,4 @@
+// tslint:disable:max-line-length
 import { Course } from './course.model';
 
 export let Courses: Course[] = [
