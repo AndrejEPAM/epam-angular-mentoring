@@ -4,14 +4,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CourseItemComponent } from './course-item.component';
 import { Course } from '../course.model';
 
-const mockCourse: Course =
-{
+const mockCourse: Course = {
   id: 53232,
   title: 'TITLE',
   creationDate: '01, October, 2019',
   duration: 'DUR',
   description: 'DESC'
-}
+};
 
 
 describe('CourseItemComponent', () => {
@@ -46,5 +45,5 @@ describe('CourseItemComponent', () => {
     button.dispatchEvent(new Event('click'));
 
     expect(component.deleteClick.emit).toHaveBeenCalledWith(mockCourse.id);
-  })
+  });
 });
