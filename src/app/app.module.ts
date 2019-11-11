@@ -11,6 +11,7 @@ import { CourseItemComponent } from './courses-list/course-item/course-item.comp
 import { LoginComponent } from './auth/login/login.component';
 import { AppRoutingModule} from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseHighlightDirective } from './courses-list/course-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BreadcrumbComponent,
     CoursesListComponent,
     CourseItemComponent,
-    LoginComponent
+    LoginComponent,
+    CourseHighlightDirective
   ],
   imports: [
     BrowserModule,
