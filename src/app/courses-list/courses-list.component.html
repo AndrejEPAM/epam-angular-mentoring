@@ -13,6 +13,7 @@
     (deleteClick)="logOnDelete($event)"
     [appCourseHighlight]=course
   ></app-course-item>
+  <div *ngIf="!courses || !courses.length"><h2>No data, feel free to add new course!</h2></div>
   <div class="load-more">
     <label>LOAD MORE</label>
   </div>
