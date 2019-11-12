@@ -1,9 +1,26 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input, Directive } from '@angular/core';
 
 import { CoursesListComponent } from './courses-list.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CoursesService } from './courses.service';
+import { Course } from './course.model';
+
+@Component({
+  selector: 'app-course-item',
+  template: '',
+  styleUrls: []
+})
+class CourseItemStubComponent {
+  @Input() public course!: Partial<Course>;
+}
+
+@Directive({
+  selector: '[appCourseHighlight]',
+})
+class CourseHighlightStubDirective {
+  @Input('appCourseHighlight') course!: Partial<Course>;
+}
 
 const mockData = [
   {
@@ -26,11 +43,14 @@ describe('CoursesListComponent', () => {
   beforeEach(async(() => {
     // mockCoursesService = jasmine.createSpyObj('CoursesService', ['getCourses']);
     TestBed.configureTestingModule({
-      declarations: [CoursesListComponent],
+      declarations: [
+        CoursesListComponent,
+        CourseItemStubComponent,
+        CourseHighlightStubDirective,
+      ],
       providers: [
         { provide: CoursesService, useValue: mockCoursesService }
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
 
