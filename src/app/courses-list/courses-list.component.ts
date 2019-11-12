@@ -13,7 +13,7 @@ export class CoursesListComponent implements OnInit {
     {
       id: 53232,
       title: 'Video Course #01',
-      creationDate: '01, October, 2019',
+      creationDate: new Date('01, October, 2019'),
       duration: '1h 3 min',
       description: '',
       topRated: false,

@@ -8,7 +8,7 @@ import { Course } from '../course.model';
 const mockCourse: Course = {
   id: 53232,
   title: 'TITLE',
-  creationDate: '01, October, 2019',
+  creationDate: new Date('01, October, 2019'),
   duration: 'DUR',
   description: 'DESC',
   topRated: false,

@@ -11,7 +11,7 @@ export class CourseHighlightDirective {
 
   @HostBinding('class.fresh') get isFresh() {
     const currentDate = new Date();
-    const creationDate = new Date(this.course.creationDate);
+    const creationDate = this.course.creationDate;
     const pastDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 14);
     return creationDate <= currentDate
       && creationDate > pastDate;
@@ -19,7 +19,7 @@ export class CourseHighlightDirective {
 
   @HostBinding('class.upcoming') get isUpcoming() {
     const currentDate = new Date();
-    const creationDate = new Date(this.course.creationDate);
+    const creationDate = this.course.creationDate;
     return creationDate > currentDate;
   }
 
