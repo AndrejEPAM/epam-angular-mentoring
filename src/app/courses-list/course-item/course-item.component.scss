@@ -16,6 +16,10 @@
   border: 5px solid lightskyblue;
 }
 
+:host.toprated .container {
+  background-color: pink;
+}
+
 .left-side {
     &__upper-row {
         display: flex;

@@ -29,7 +29,8 @@ const mockData = [
     title: 'TITLE',
     creationDate: '01, October, 2019',
     duration: 'DUR',
-    description: 'DESC'
+    description: 'DESC',
+    topRated: false,
   }
 ];
 const mockCoursesService: Partial<CoursesService> = {

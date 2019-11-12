@@ -9,9 +9,10 @@
   </div>
 
   <app-course-item *ngFor="let course of courses"
-    [course]=course
+    [course]="course"
     (deleteClick)="logOnDelete($event)"
-    [appCourseHighlight]=course
+    [appCourseHighlight]="course"
+    [class.toprated]="course.topRated"
   ></app-course-item>
   <div *ngIf="!courses || !courses.length"><h2>No data, feel free to add new course!</h2></div>
   <div class="load-more">
