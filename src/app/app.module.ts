@@ -12,6 +12,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AppRoutingModule} from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseHighlightDirective } from './courses-list/course-highlight.directive';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CourseHighlightDirective } from './courses-list/course-highlight.direct
     CourseItemComponent,
     LoginComponent,
     CourseHighlightDirective,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,
