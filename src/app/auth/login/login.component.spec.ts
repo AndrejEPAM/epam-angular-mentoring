@@ -16,7 +16,6 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
 
     component = fixture.componentInstance;
-    component.ngOnInit();
     fixture.detectChanges();
   }));
 
