@@ -23,7 +23,7 @@ import { CourseHighlightDirective } from './courses-list/course-highlight.direct
     CoursesListComponent,
     CourseItemComponent,
     LoginComponent,
-    CourseHighlightDirective
+    CourseHighlightDirective,
   ],
   imports: [
     BrowserModule,
