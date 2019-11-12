@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './course.model';
-import { Courses } from './courses.helper';
+import { mockCourse } from './courses.helper';
 import { CoursesService } from './courses.service';
 
 @Component({
@@ -9,16 +9,7 @@ import { CoursesService } from './courses.service';
   styleUrls: ['./courses-list.component.scss']
 })
 export class CoursesListComponent implements OnInit {
-  courses: Course[] = [
-    {
-      id: 53232,
-      title: 'Video Course #01',
-      creationDate: new Date('01, October, 2019'),
-      duration: '1h 3 min',
-      description: '',
-      topRated: false,
-    }
-  ];
+  courses: Course[] = [ mockCourse ];
 
   constructor(private coursesService: CoursesService) { }
 

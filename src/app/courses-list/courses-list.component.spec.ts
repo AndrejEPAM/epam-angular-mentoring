@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import { CoursesListComponent } from './courses-list.component';
 import { CoursesService } from './courses.service';
 import { Course } from './course.model';
+import { mockCourse } from './courses.helper';
 
 @Component({
   selector: 'app-course-item',
@@ -23,16 +24,7 @@ class CourseHighlightStubDirective {
   @Input('appCourseHighlight') course!: Partial<Course>;
 }
 
-const mockData = [
-  {
-    id: 53232,
-    title: 'TITLE',
-    creationDate: '01, October, 2019',
-    duration: 'DUR',
-    description: 'DESC',
-    topRated: false,
-  }
-];
+const mockData = [ mockCourse ];
 const mockCoursesService: Partial<CoursesService> = {
   getCourses: () => []
 };

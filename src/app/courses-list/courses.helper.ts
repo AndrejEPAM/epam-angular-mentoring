@@ -1,7 +1,7 @@
 // tslint:disable:max-line-length
 import { Course } from './course.model';
 
-export let Courses: Course[] = [
+export const Courses: Course[] = [
     {
         id: 0,
         title: 'Video Course #01',
@@ -27,3 +27,12 @@ export let Courses: Course[] = [
         topRated: false,
     }
 ];
+
+export const mockCourse: Course = {
+  id: 53232,
+  title: 'TITLE',
+  creationDate: new Date('01, October, 2019'),
+  duration: 'DUR',
+  description: 'DESC',
+  topRated: false,
+};

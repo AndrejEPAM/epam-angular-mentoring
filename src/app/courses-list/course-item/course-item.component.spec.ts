@@ -3,16 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { CourseItemComponent } from './course-item.component';
-import { Course } from '../course.model';
-
-const mockCourse: Course = {
-  id: 53232,
-  title: 'TITLE',
-  creationDate: new Date('01, October, 2019'),
-  duration: 'DUR',
-  description: 'DESC',
-  topRated: false,
-};
+import { mockCourse } from '../courses.helper';
 
 
 describe('CourseItemComponent', () => {
