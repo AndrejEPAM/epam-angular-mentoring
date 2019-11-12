@@ -10,6 +10,7 @@ import { CoursesService } from './courses.service';
 })
 export class CoursesListComponent implements OnInit {
   courses: Course[] = [ mockCourse ];
+  orderByDate = (a: Course, b: Course) => (a.creationDate < b.creationDate ? -1 : (a.creationDate > b.creationDate ? 1 : 0));
 
   constructor(private coursesService: CoursesService) { }
 

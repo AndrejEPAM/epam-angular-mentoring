@@ -7,6 +7,8 @@ import { CoursesListComponent } from './courses-list.component';
 import { CoursesService } from './courses.service';
 import { Course } from './course.model';
 import { mockCourse } from './courses.helper';
+import { OrderByPipe } from '../pipes/order-by.pipe';
+import { CourseItemComponent } from './course-item/course-item.component';
 
 @Component({
   selector: 'app-course-item',
@@ -41,6 +43,7 @@ describe('CoursesListComponent', () => {
         CoursesListComponent,
         CourseItemStubComponent,
         CourseHighlightStubDirective,
+        OrderByPipe, // integration test for this pipe
       ],
       providers: [
         { provide: CoursesService, useValue: mockCoursesService }
@@ -85,5 +88,20 @@ describe('CoursesListComponent', () => {
     expect(text).toContain('No data');
   });
 
+  it('should sort courses by date', () => {
+    const service = TestBed.get(CoursesService);
+    const courses: Course[] = [
+      { ...mockCourse, title: '2100', creationDate: new Date('2100') },
+      { ...mockCourse, title: '1970', creationDate: new Date('1970') },
+      { ...mockCourse, title: '2019', creationDate: new Date('2019') },
+    ];
+    spyOn(service, 'getCourses').and.returnValue(courses);
 
+    fixture.detectChanges();
+
+    const courseItems = fixture.debugElement.queryAll(By.directive(CourseItemStubComponent));
+    const titles = courseItems
+      .map((debugElement: DebugElement) => (debugElement.componentInstance as CourseItemComponent).course.title);
+    expect(titles).toEqual(['1970', '2019', '2100']);
+  });
 });
