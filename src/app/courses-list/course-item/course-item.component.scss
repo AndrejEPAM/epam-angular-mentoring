@@ -8,6 +8,14 @@
     display: flex;
 }
 
+:host.fresh .container {
+  border: 5px solid green;
+}
+
+:host.upcoming .container {
+  border: 5px solid lightskyblue;
+}
+
 .left-side {
     &__upper-row {
         display: flex;

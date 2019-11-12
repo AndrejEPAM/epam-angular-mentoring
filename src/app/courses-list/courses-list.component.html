@@ -8,7 +8,11 @@
     <button class="btn btn-primary">Add course</button>
   </div>
 
-  <app-course-item *ngFor="let course of courses" [course]=course (deleteClick)="logOnDelete($event)"></app-course-item>
+  <app-course-item *ngFor="let course of courses"
+    [course]=course
+    (deleteClick)="logOnDelete($event)"
+    [appCourseHighlight]=course
+  ></app-course-item>
   <div class="load-more">
     <label>LOAD MORE</label>
   </div>
