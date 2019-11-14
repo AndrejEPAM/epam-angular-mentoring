@@ -1,9 +1,9 @@
 <div class="container">
   <div class="left-side">
     <div class="left-side__upper-row">
-      <h3><strong>{{ course?.title}}</strong></h3>
+      <h3><strong>{{ course?.title | uppercase }}</strong></h3>
       <label> {{ course?.duration }} </label>
-      <label> {{ course?.creationDate }} </label>
+      <label> {{ course?.creationDate | date:'mediumDate' }} </label>
     </div>
     <p>{{ course?.description }}</p>
   </div>

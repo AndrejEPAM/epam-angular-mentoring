@@ -1,12 +1,12 @@
 @import '../content/scss/01-settings/all_settings';
 :host {
-    background-color: $dark-menu;
-    color: $border-grey;
+  background-color: $dark-menu;
+  color: $border-grey;
 
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: end;
-    padding: 20px 80px 20px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: end;
+  padding: 20px 80px 20px 0;
 }

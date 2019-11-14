@@ -1,36 +1,48 @@
 @import '../../content/scss/01-settings/all_settings';
 
 .container {
-    background-color: #fff;
-    margin: 24px 0;
-    padding: 24px 10px 24px 24px;
-    border-radius: 5px;
-    display: flex;
+  background-color: #fff;
+  margin: 24px 0;
+  padding: 24px 10px 24px 24px;
+  border-radius: 5px;
+  display: flex;
+}
+
+:host.fresh .container {
+  border: 5px solid green;
+}
+
+:host.upcoming .container {
+  border: 5px solid lightskyblue;
+}
+
+:host.toprated .container {
+  background-color: pink;
 }
 
 .left-side {
-    &__upper-row {
-        display: flex;
-        align-items: flex-end;
+  &__upper-row {
+    display: flex;
+    align-items: flex-end;
 
-        & > label {
-            display: absolute;
-            right: 0;
-            margin-left: 20px;
-        }
+    & > label {
+      display: absolute;
+      right: 0;
+      margin-left: 20px;
     }
+  }
 }
 
 .right-side {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 label {
-    color: $font-greyed-out;
+  color: $font-greyed-out;
 }
 
 .btn {
-    margin: 0 12px;
+  margin: 0 12px;
 }

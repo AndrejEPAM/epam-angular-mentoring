@@ -1,32 +1,32 @@
 @import '../content/scss/01-settings/all_settings';
 
 .navbar {
-    background-color: $dark-menu;
-    color: #fff;
-    padding: 16px;
-    align-items: center;
+  background-color: $dark-menu;
+  color: #fff;
+  padding: 16px;
+  align-items: center;
+  display: flex;
+
+  &__menu-points {
+    margin: 0 10px;
     display: flex;
+  }
 
-    &__menu-points {
-        margin: 0 10px;
-        display: flex;
-    }
-
-    & > a {
-      text-decoration: none;
-    }
+  & > a {
+    text-decoration: none;
+  }
 }
 
 .user {
-    padding: 0 20px;
+  padding: 0 20px;
 
-    & > span { margin-left: 6px;}
+  & > span { margin-left: 6px;}
 }
 
 .signing {
-    padding: 0 20px;
+  padding: 0 20px;
 
-    & > span {
-      margin-left: 6px;
-    }
+  & > span {
+    margin-left: 6px;
+  }
 }
