@@ -5,46 +5,46 @@
 }
 
 .searchbar {
-    display: flex;
+  display: flex;
 }
 
 .add-course {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
 }
 
 input[type='text'] {
-    background-image: url('../../assets/search.svg');
-    background-position: 7px 14px;
-    background-repeat: no-repeat;
+  background-image: url('../../assets/search.svg');
+  background-position: 7px 14px;
+  background-repeat: no-repeat;
 
-    border: 1px solid $border-grey;
-    width: 360px;
-    padding: 10px 35px;
-    border-radius: 5px;
-    margin-right: 6px;
-    font-size: 1.2em;
+  border: 1px solid $border-grey;
+  width: 360px;
+  padding: 10px 35px;
+  border-radius: 5px;
+  margin-right: 6px;
+  font-size: 1.2em;
 }
 
 .load-more {
-    background-color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    margin-bottom: 150px;
+  background-color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  margin-bottom: 150px;
 
-    & > label {
-        margin-bottom: 0;
-        padding: 12px 0;
-    }
+  & > label {
+    margin-bottom: 0;
+    padding: 12px 0;
+  }
 }
 
 .btn-primary {
-    padding: 6px 24px 6px 48px;
+  padding: 6px 24px 6px 48px;
 }
 
 .btn-secondary {
-    padding: 10px 24px;
-    font-size: 18px;
+  padding: 10px 24px;
+  font-size: 18px;
 }
