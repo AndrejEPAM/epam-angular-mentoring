@@ -45,4 +45,13 @@ describe('Service: CoursesService', () => {
     expect(service.courses[0].title).toBe('HAHA');
   });
 
+  it('removeCourse() should delete a course', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [ {...mockCourse, id: 0}, {...mockCourse, id: 1, title: 'COURSE'}];
+
+    service.removeCourse(1);
+
+    expect(service.courses[1]).toBeFalsy();
+  });
+
 });

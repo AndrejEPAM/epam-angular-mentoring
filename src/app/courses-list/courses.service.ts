@@ -33,4 +33,10 @@ export class CoursesService {
     }
     return this.courses[course.id];
   }
+
+  public removeCourse(id: number) {
+    if (this.courses[id]) {
+      delete this.courses[id];
+    }
+  }
 }
