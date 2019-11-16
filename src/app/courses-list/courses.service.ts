@@ -13,4 +13,10 @@ export class CoursesService {
   public getCourses(): Course[] {
     return this.courses;
   }
+
+  public createCourse(course: Course): number {
+    course.id = this.courses.length;
+    this.courses.push(course);
+    return course.id;
+  }
 }
