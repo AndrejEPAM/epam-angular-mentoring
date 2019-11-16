@@ -25,13 +25,12 @@ export class CoursesService {
   }
 
   public updateCourse(course: Partial<Course>): Course {
-    if (course.id === undefined || !this.courses[course.id]) {
+    const index = this.courses.findIndex((c) => c && c.id === course.id);
+    if (index < 0) {
       throw new Error('updateCourse error, course needs id');
     }
-    if (this.courses[course.id]) {
-      this.courses[course.id] = { ...this.courses[course.id], ...course };
-    }
-    return this.courses[course.id];
+    this.courses[index] = { ...this.courses[index], ...course };
+    return this.courses[index];
   }
 
   public removeCourse(id: number) {

@@ -37,12 +37,13 @@ describe('Service: CoursesService', () => {
 
   it('updateCourse() should update a course with fields', () => {
     const service: CoursesService = new CoursesService();
-    service.courses = [ {...mockCourse, id: 0}, {...mockCourse, id: 1, title: 'COURSE'}];
-    const course: Partial<Course> = { id: 0, title: 'HAHA' };
+    service.courses = [ {...mockCourse, id: 333}, {...mockCourse, id: 1, title: 'COURSE'}];
+    const course: Partial<Course> = { id: 333, title: 'HAHA' };
 
     service.updateCourse(course);
 
-    expect(service.courses[0].title).toBe('HAHA');
+    const updatedCourse = service.courses.find((c) => c.id === 333);
+    expect(updatedCourse && updatedCourse.title).toBe('HAHA');
   });
 
   it('updateCourse() should throw an error for non-existent course', () => {
