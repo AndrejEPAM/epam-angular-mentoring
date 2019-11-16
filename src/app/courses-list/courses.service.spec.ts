@@ -45,6 +45,14 @@ describe('Service: CoursesService', () => {
     expect(service.courses[0].title).toBe('HAHA');
   });
 
+  it('updateCourse() should throw an error for non-existent course', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [];
+    const course: Partial<Course> = { id: 0, title: 'HAHA' };
+
+    expect(() => { service.updateCourse(course); }).toThrowError();
+  });
+
   it('removeCourse() should delete a course, but keep the array', () => {
     const service: CoursesService = new CoursesService();
     service.courses = [ {...mockCourse, id: 8}, {...mockCourse, id: 2222, title: 'COURSE'}];
@@ -55,6 +63,13 @@ describe('Service: CoursesService', () => {
 
     expect(service.courses.filter((course) => course.id === 2222).length).toBe(0);
     expect(service.courses).toBe(oldCourses);
+  });
+
+  it('removeCourse() should throw an error for non-existent course', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [];
+
+    expect(() => { service.removeCourse(1234); }).toThrowError();
   });
 
 });
