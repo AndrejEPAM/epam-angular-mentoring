@@ -23,4 +23,14 @@ export class CoursesService {
     this.courses.push(course);
     return course.id;
   }
+
+  public updateCourse(course: Partial<Course>): Course {
+    if (course.id === undefined || !this.courses[course.id]) {
+      throw new Error('updateCourse error, course needs id');
+    }
+    if (this.courses[course.id]) {
+      this.courses[course.id] = { ...this.courses[course.id], ...course };
+    }
+    return this.courses[course.id];
+  }
 }

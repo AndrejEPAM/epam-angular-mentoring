@@ -1,7 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-
 import { CoursesService } from './courses.service';
 import { Courses, mockCourse } from './courses.helper';
+import { Course } from './course.model';
 
 const courseItem = Courses;
 
@@ -36,5 +35,14 @@ describe('Service: CoursesService', () => {
     expect(course && course.title).toBe('COURSE');
   });
 
+  it('updateCourse() should update a course with fields', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [ {...mockCourse, id: 0}, {...mockCourse, id: 1, title: 'COURSE'}];
+    const course: Partial<Course> = { id: 0, title: 'HAHA' };
+
+    service.updateCourse(course);
+
+    expect(service.courses[0].title).toBe('HAHA');
+  });
 
 });
