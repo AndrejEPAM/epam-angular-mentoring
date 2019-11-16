@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input, Directive, DebugElement } from '@angular/core';
+import { Component, Input, Directive, DebugElement, Output, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { CoursesListComponent } from './courses-list.component';
@@ -17,6 +17,7 @@ import { CourseItemComponent } from './course-item/course-item.component';
 })
 class CourseItemStubComponent {
   @Input() public course!: Partial<Course>;
+  @Output() deleteClick = new EventEmitter<number>();
 }
 
 @Directive({
@@ -34,7 +35,7 @@ describe('CoursesListComponent', () => {
   let mockCoursesService: jasmine.SpyObj<CoursesService>; // use spy Later
 
   beforeEach(async(() => {
-    mockCoursesService = jasmine.createSpyObj('CoursesService', ['getCourses']);
+    mockCoursesService = jasmine.createSpyObj<CoursesService>('CoursesService', ['getCourses', 'removeCourse']);
     TestBed.configureTestingModule({
       declarations: [
         CoursesListComponent,
@@ -100,5 +101,16 @@ describe('CoursesListComponent', () => {
     const titles = courseItems
       .map((debugElement: DebugElement) => (debugElement.componentInstance as CourseItemComponent).course.title);
     expect(titles).toEqual(['1970', '2019', '2100']);
+  });
+
+  it('should delete course through service', () => {
+    const service = TestBed.get(CoursesService);
+    service.getCourses.and.returnValue([{ ...mockCourse }]);
+    fixture.detectChanges();
+    const courseItem = fixture.debugElement.query(By.directive(CourseItemStubComponent));
+
+    (courseItem.componentInstance as CourseItemComponent).deleteClick.emit(mockCourse.id);
+
+    expect(service.removeCourse).toHaveBeenCalledWith(mockCourse.id);
   });
 });

@@ -10,7 +10,7 @@
 
   <app-course-item *ngFor="let course of courses | orderBy : orderByDate"
     [course]="course"
-    (deleteClick)="logOnDelete($event)"
+    (deleteClick)="onDelete($event)"
     [appCourseHighlight]="course"
     [class.toprated]="course?.topRated"
   ></app-course-item>
