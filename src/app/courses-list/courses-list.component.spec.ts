@@ -27,17 +27,14 @@ class CourseHighlightStubDirective {
 }
 
 const mockData = [ mockCourse ];
-const mockCoursesService: Partial<CoursesService> = {
-  getCourses: () => []
-};
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
   let fixture: ComponentFixture<CoursesListComponent>;
-  // let mockCoursesService: jasmine.SpyObj<CoursesService>; // use spy Later
+  let mockCoursesService: jasmine.SpyObj<CoursesService>; // use spy Later
 
   beforeEach(async(() => {
-    // mockCoursesService = jasmine.createSpyObj('CoursesService', ['getCourses']);
+    mockCoursesService = jasmine.createSpyObj('CoursesService', ['getCourses']);
     TestBed.configureTestingModule({
       declarations: [
         CoursesListComponent,
@@ -62,7 +59,7 @@ describe('CoursesListComponent', () => {
 
   it('#ngOnInit should call coursesService and set courses', () => {
     const service = TestBed.get(CoursesService);
-    const getCoursesSpy = spyOn(service, 'getCourses').and.returnValue(mockData);
+    const getCoursesSpy = service.getCourses.and.returnValue(mockData);
     fixture.detectChanges();
 
     expect(getCoursesSpy).toHaveBeenCalled();
@@ -71,7 +68,7 @@ describe('CoursesListComponent', () => {
 
   it('should display courses', () => {
     const service = TestBed.get(CoursesService);
-    spyOn(service, 'getCourses').and.returnValue(mockData);
+    service.getCourses.and.returnValue(mockData);
 
     fixture.detectChanges();
 
@@ -95,7 +92,7 @@ describe('CoursesListComponent', () => {
       { ...mockCourse, title: '1970', creationDate: new Date('1970') },
       { ...mockCourse, title: '2019', creationDate: new Date('2019') },
     ];
-    spyOn(service, 'getCourses').and.returnValue(courses);
+    service.getCourses.and.returnValue(courses);
 
     fixture.detectChanges();
 
