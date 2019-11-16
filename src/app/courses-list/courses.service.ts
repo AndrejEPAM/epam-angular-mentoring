@@ -35,8 +35,10 @@ export class CoursesService {
   }
 
   public removeCourse(id: number) {
-    if (this.courses[id]) {
-      delete this.courses[id];
+    const index = this.courses.findIndex((course) => course && course.id === id);
+    if (index < 0) {
+      throw new Error(`cannot delete non-existing id ${id}`);
     }
+    delete this.courses[index];
   }
 }

@@ -45,13 +45,16 @@ describe('Service: CoursesService', () => {
     expect(service.courses[0].title).toBe('HAHA');
   });
 
-  it('removeCourse() should delete a course', () => {
+  it('removeCourse() should delete a course, but keep the array', () => {
     const service: CoursesService = new CoursesService();
-    service.courses = [ {...mockCourse, id: 0}, {...mockCourse, id: 1, title: 'COURSE'}];
+    service.courses = [ {...mockCourse, id: 8}, {...mockCourse, id: 2222, title: 'COURSE'}];
+    expect(service.courses.filter((course) => course.id === 2222).length).toBe(1);
+    const oldCourses = service.courses;
 
-    service.removeCourse(1);
+    service.removeCourse(2222);
 
-    expect(service.courses[1]).toBeFalsy();
+    expect(service.courses.filter((course) => course.id === 2222).length).toBe(0);
+    expect(service.courses).toBe(oldCourses);
   });
 
 });
