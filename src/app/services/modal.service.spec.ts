@@ -13,6 +13,7 @@ describe('ModalService', () => {
   it('showModal() should return Observable<boolean>', () => {
     const service: ModalService = TestBed.get(ModalService);
     let returnValue: boolean | undefined;
+    spyOn(window, 'confirm').and.returnValue(false);
     service.showModal('some text').subscribe((value: boolean) => { // executed in sync in the test
       returnValue = value;
     },
