@@ -13,6 +13,7 @@ import { AppRoutingModule} from './app.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseHighlightDirective } from './courses-list/course-highlight.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     LoginComponent,
     CourseHighlightDirective,
     OrderByPipe,
+    AddCourseComponent,
   ],
   imports: [
     BrowserModule,
