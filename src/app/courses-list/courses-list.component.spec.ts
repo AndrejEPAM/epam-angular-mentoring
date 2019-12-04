@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Directive, DebugElement, Output, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 import { CoursesListComponent } from './courses-list.component';
 import { CoursesService } from './courses.service';
@@ -9,6 +10,7 @@ import { Course } from './course.model';
 import { mockCourse } from './courses.helper';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { CourseItemComponent } from './course-item/course-item.component';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-course-item',
@@ -32,10 +34,12 @@ const mockData = [ mockCourse ];
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
   let fixture: ComponentFixture<CoursesListComponent>;
-  let mockCoursesService: jasmine.SpyObj<CoursesService>; // use spy Later
+  let mockCoursesService: jasmine.SpyObj<CoursesService>;
+  let mockModalService: jasmine.SpyObj<ModalService>;
 
   beforeEach(async(() => {
     mockCoursesService = jasmine.createSpyObj<CoursesService>('CoursesService', ['getCourses', 'removeCourse']);
+    mockModalService = jasmine.createSpyObj<ModalService>('ModalService', ['showModal']);
     TestBed.configureTestingModule({
       declarations: [
         CoursesListComponent,
@@ -44,7 +48,8 @@ describe('CoursesListComponent', () => {
         OrderByPipe, // integration test for this pipe
       ],
       providers: [
-        { provide: CoursesService, useValue: mockCoursesService }
+        { provide: CoursesService, useValue: mockCoursesService },
+        { provide: ModalService, useValue: mockModalService },
       ],
     }).compileComponents();
   }));
@@ -104,13 +109,15 @@ describe('CoursesListComponent', () => {
   });
 
   it('should delete course through service', () => {
-    const service = TestBed.get(CoursesService);
-    service.getCourses.and.returnValue([{ ...mockCourse }]);
+    const coursesService = TestBed.get(CoursesService);
+    coursesService.getCourses.and.returnValue([{ ...mockCourse }]);
+    const modalService = TestBed.get(ModalService);
+    modalService.showModal.and.returnValue(of(true));
     fixture.detectChanges();
     const courseItem = fixture.debugElement.query(By.directive(CourseItemStubComponent));
 
     (courseItem.componentInstance as CourseItemComponent).deleteClick.emit(mockCourse.id);
 
-    expect(service.removeCourse).toHaveBeenCalledWith(mockCourse.id);
+    expect(coursesService.removeCourse).toHaveBeenCalledWith(mockCourse.id);
   });
 });
