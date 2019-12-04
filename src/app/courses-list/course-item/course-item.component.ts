@@ -9,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class CourseItemComponent implements OnInit {
   @Input() public course!: Course;
-  @Output() deleteClick = new EventEmitter();
+  @Output() deleteClick = new EventEmitter<number>();
 
   constructor() { }
 

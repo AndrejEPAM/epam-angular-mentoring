@@ -1,21 +1,76 @@
-import { TestBed } from '@angular/core/testing';
-
 import { CoursesService } from './courses.service';
-import { Courses } from './courses.helper';
+import { Courses, mockCourse } from './courses.helper';
+import { Course } from './course.model';
 
 const courseItem = Courses;
 
 describe('Service: CoursesService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-  }));
-
   it('should be created', () => {
-    const service: CoursesService = TestBed.get(CoursesService);
+    const service: CoursesService = new CoursesService();
     expect(service).toBeTruthy();
   });
 
-  it('#getCourses should return an array of Courses', () => {
-    const service = TestBed.get(CoursesService);
+  it('getCourses() should return an array of Courses', () => {
+    const service: CoursesService = new CoursesService();
     expect(service.getCourses()).toBe(courseItem);
   });
+
+  it('createCourse() should create a course and return its id', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = []; // reset courses
+    const course = { ...mockCourse };
+
+    const returnValue = service.createCourse(course);
+
+    expect(service.courses.length).toBe(1);
+    expect(returnValue).toBe(0);
+  });
+
+  it('getCourse() should get a course with a specific id', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [ {...mockCourse, id: 0}, {...mockCourse, id: 1, title: 'COURSE'}];
+
+    const course = service.getCourse(1);
+
+    expect(course && course.title).toBe('COURSE');
+  });
+
+  it('updateCourse() should update a course with fields', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [ {...mockCourse, id: 333}, {...mockCourse, id: 1, title: 'COURSE'}];
+    const course: Partial<Course> = { id: 333, title: 'HAHA' };
+
+    service.updateCourse(course);
+
+    const updatedCourse = service.courses.find((c) => c.id === 333);
+    expect(updatedCourse && updatedCourse.title).toBe('HAHA');
+  });
+
+  it('updateCourse() should throw an error for non-existent course', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [];
+    const course: Partial<Course> = { id: 0, title: 'HAHA' };
+
+    expect(() => { service.updateCourse(course); }).toThrowError();
+  });
+
+  it('removeCourse() should delete a course, but keep the array', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [ {...mockCourse, id: 8}, {...mockCourse, id: 2222, title: 'COURSE'}];
+    expect(service.courses.filter((course) => course.id === 2222).length).toBe(1);
+    const oldCourses = service.courses;
+
+    service.removeCourse(2222);
+
+    expect(service.courses.filter((course) => course.id === 2222).length).toBe(0);
+    expect(service.courses).toBe(oldCourses);
+  });
+
+  it('removeCourse() should throw an error for non-existent course', () => {
+    const service: CoursesService = new CoursesService();
+    service.courses = [];
+
+    expect(() => { service.removeCourse(1234); }).toThrowError();
+  });
+
 });

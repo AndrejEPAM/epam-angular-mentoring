@@ -1,7 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input, Directive, DebugElement } from '@angular/core';
+import { Component, Input, Directive, DebugElement, Output, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 import { CoursesListComponent } from './courses-list.component';
 import { CoursesService } from './courses.service';
@@ -9,6 +10,7 @@ import { Course } from './course.model';
 import { mockCourse } from './courses.helper';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { CourseItemComponent } from './course-item/course-item.component';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-course-item',
@@ -17,6 +19,7 @@ import { CourseItemComponent } from './course-item/course-item.component';
 })
 class CourseItemStubComponent {
   @Input() public course!: Partial<Course>;
+  @Output() deleteClick = new EventEmitter<number>();
 }
 
 @Directive({
@@ -27,17 +30,16 @@ class CourseHighlightStubDirective {
 }
 
 const mockData = [ mockCourse ];
-const mockCoursesService: Partial<CoursesService> = {
-  getCourses: () => []
-};
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
   let fixture: ComponentFixture<CoursesListComponent>;
-  // let mockCoursesService: jasmine.SpyObj<CoursesService>; // use spy Later
+  let mockCoursesService: jasmine.SpyObj<CoursesService>;
+  let mockModalService: jasmine.SpyObj<ModalService>;
 
   beforeEach(async(() => {
-    // mockCoursesService = jasmine.createSpyObj('CoursesService', ['getCourses']);
+    mockCoursesService = jasmine.createSpyObj<CoursesService>('CoursesService', ['getCourses', 'removeCourse']);
+    mockModalService = jasmine.createSpyObj<ModalService>('ModalService', ['showModal']);
     TestBed.configureTestingModule({
       declarations: [
         CoursesListComponent,
@@ -46,7 +48,8 @@ describe('CoursesListComponent', () => {
         OrderByPipe, // integration test for this pipe
       ],
       providers: [
-        { provide: CoursesService, useValue: mockCoursesService }
+        { provide: CoursesService, useValue: mockCoursesService },
+        { provide: ModalService, useValue: mockModalService },
       ],
     }).compileComponents();
   }));
@@ -62,7 +65,7 @@ describe('CoursesListComponent', () => {
 
   it('#ngOnInit should call coursesService and set courses', () => {
     const service = TestBed.get(CoursesService);
-    const getCoursesSpy = spyOn(service, 'getCourses').and.returnValue(mockData);
+    const getCoursesSpy = service.getCourses.and.returnValue(mockData);
     fixture.detectChanges();
 
     expect(getCoursesSpy).toHaveBeenCalled();
@@ -71,7 +74,7 @@ describe('CoursesListComponent', () => {
 
   it('should display courses', () => {
     const service = TestBed.get(CoursesService);
-    spyOn(service, 'getCourses').and.returnValue(mockData);
+    service.getCourses.and.returnValue(mockData);
 
     fixture.detectChanges();
 
@@ -95,7 +98,7 @@ describe('CoursesListComponent', () => {
       { ...mockCourse, title: '1970', creationDate: new Date('1970') },
       { ...mockCourse, title: '2019', creationDate: new Date('2019') },
     ];
-    spyOn(service, 'getCourses').and.returnValue(courses);
+    service.getCourses.and.returnValue(courses);
 
     fixture.detectChanges();
 
@@ -103,5 +106,18 @@ describe('CoursesListComponent', () => {
     const titles = courseItems
       .map((debugElement: DebugElement) => (debugElement.componentInstance as CourseItemComponent).course.title);
     expect(titles).toEqual(['1970', '2019', '2100']);
+  });
+
+  it('should delete course through service', () => {
+    const coursesService = TestBed.get(CoursesService);
+    coursesService.getCourses.and.returnValue([{ ...mockCourse }]);
+    const modalService = TestBed.get(ModalService);
+    modalService.showModal.and.returnValue(of(true));
+    fixture.detectChanges();
+    const courseItem = fixture.debugElement.query(By.directive(CourseItemStubComponent));
+
+    (courseItem.componentInstance as CourseItemComponent).deleteClick.emit(mockCourse.id);
+
+    expect(coursesService.removeCourse).toHaveBeenCalledWith(mockCourse.id);
   });
 });
