@@ -108,16 +108,29 @@ describe('CoursesListComponent', () => {
     expect(titles).toEqual(['1970', '2019', '2100']);
   });
 
-  it('should delete course through service', () => {
+  it('should delete course through service when pressing "yes"', () => {
     const coursesService = TestBed.get(CoursesService);
     coursesService.getCourses.and.returnValue([{ ...mockCourse }]);
     const modalService = TestBed.get(ModalService);
-    modalService.showModal.and.returnValue(of(true));
+    modalService.showModal.and.returnValue(of(true)); // preload mock with fixed "yes"
     fixture.detectChanges();
     const courseItem = fixture.debugElement.query(By.directive(CourseItemStubComponent));
 
     (courseItem.componentInstance as CourseItemComponent).deleteClick.emit(mockCourse.id);
 
     expect(coursesService.removeCourse).toHaveBeenCalledWith(mockCourse.id);
+  });
+
+  it('should NOT delete course through service when pressing "no"', () => {
+    const coursesService = TestBed.get(CoursesService);
+    coursesService.getCourses.and.returnValue([{ ...mockCourse }]);
+    const modalService = TestBed.get(ModalService);
+    modalService.showModal.and.returnValue(of(false)); // preload mock with fixed "no"
+    fixture.detectChanges();
+    const courseItem = fixture.debugElement.query(By.directive(CourseItemStubComponent));
+
+    (courseItem.componentInstance as CourseItemComponent).deleteClick.emit(mockCourse.id);
+
+    expect(coursesService.removeCourse).not.toHaveBeenCalled();
   });
 });

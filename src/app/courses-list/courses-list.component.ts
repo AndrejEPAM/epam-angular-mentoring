@@ -19,8 +19,10 @@ export class CoursesListComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.modalService.showModal('Are you sure you want to delete?').subscribe(() => {
-      this.coursesService.removeCourse(id);
+    this.modalService.showModal('Are you sure you want to delete?').subscribe((answer: boolean) => {
+      if (answer === true) {
+        this.coursesService.removeCourse(id);
+      }
     });
   }
 
