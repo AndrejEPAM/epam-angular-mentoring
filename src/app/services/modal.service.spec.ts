@@ -9,4 +9,16 @@ describe('ModalService', () => {
     const service: ModalService = TestBed.get(ModalService);
     expect(service).toBeTruthy();
   });
+
+  it('showModal() should return Observable<boolean>', () => {
+    const service: ModalService = TestBed.get(ModalService);
+    let returnValue: boolean | undefined;
+    service.showModal('some text').subscribe((value: boolean) => { // executed in sync in the test
+      returnValue = value;
+    },
+    () => {
+      fail('should not get error');
+    }).unsubscribe();
+    expect(returnValue).not.toBeUndefined();
+  });
 });
