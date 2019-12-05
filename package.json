@@ -6,6 +6,7 @@
     "start": "ng serve --aot",
     "build": "ng build",
     "test": "ng test",
+    "jest": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -37,6 +38,7 @@
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^24.9.0",
+    "jest-preset-angular": "^8.0.0",
     "karma": "~4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
