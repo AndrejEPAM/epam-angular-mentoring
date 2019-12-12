@@ -1,16 +1,18 @@
-<form [formGroup]="">
-  <h2><label for="title">Title</label></h2>
-  <p><input name="title" id="title"></p>
-  <h2><label for="description">Description</label></h2>
-  <p><textarea name="description" id="description"></textarea></p>
-  <h2>Date:</h2>
-  <p><!-- later will be a component --><input type="date"></p>
-  <h2>Duration:</h2>
-  <p><!-- later will be a component --><input type="number"></p>
-  <!--h2>Authors:</h2>
-  <p><input></p-->
-  <div class="buttons-block">
-    <button type="submit">Save</button>
-    <button type="reset">Cancel</button>
-  </div>
-</form>
+<div class="container">
+  <form [formGroup]="form" (submit)="onSubmit()" (reset)="onCancel()">
+    <h2><label for="title">Title</label></h2>
+    <p><input name="title" id="title" formControlName="title"></p>
+    <h2><label for="description">Description</label></h2>
+    <p><textarea name="description" id="description" formControlName="description"></textarea></p>
+    <h2>Date:</h2>
+    <p><!-- later will be a component --><input type="date"></p>
+    <h2>Duration:</h2>
+    <p><!-- later will be a component --><input type="number"></p>
+    <!--h2>Authors:</h2>
+    <p><input></p-->
+    <div class="buttons-block">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="reset" class="btn btn-secondary">Cancel</button>
+    </div>
+  </form>
+</div>

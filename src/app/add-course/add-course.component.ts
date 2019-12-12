@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCourseComponent implements OnInit {
 
+  form = new FormGroup({
+    title: new FormControl(),
+    description: new FormControl(),
+    date: new FormControl(),
+  });
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    console.log(this.form);
+  }
+
+  onCancel() {
+    console.log('cancel');
+  }
 }
