@@ -14,6 +14,9 @@ describe('AuthService', () => {
     spyOn(localStorage, 'clear').and.callFake(function () {
         store = {};
     });
+    spyOn(localStorage, 'removeItem').and.callFake(function (key) {
+      delete store[key];
+    });
   });
   
   it('should be created', () => {
@@ -26,4 +29,11 @@ describe('AuthService', () => {
     service.login('USER', 'PASSWORD');
     expect(localStorage.setItem).toHaveBeenCalled();
   });
+  
+  it('logout() should wipe token from LocalStorage', () => {
+    const service: AuthService = new AuthService();
+    service.logout('USER');
+    expect(localStorage.removeItem).toHaveBeenCalled();
+  });
+
 });
