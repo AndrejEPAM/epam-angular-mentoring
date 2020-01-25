@@ -5,11 +5,11 @@
   </div>
 
   <div class="add-course">
-    <button class="btn btn-primary">Add course</button>
+    <button class="btn btn-primary" routerLink="./new">Add course</button>
   </div>
 
   <ng-container *ngFor="let course of courses | orderBy : orderByDate">
-    <app-course-item *ngIf="course"
+    <app-course-item *ngIf="course" [routerLink]="course.id"
       [course]="course"
       (deleteClick)="onDelete($event)"
       [appCourseHighlight]="course"
