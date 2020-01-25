@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Directive, DebugElement, Output, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CoursesListComponent } from './courses-list.component';
 import { CoursesService } from './courses.service';
@@ -41,6 +42,9 @@ describe('CoursesListComponent', () => {
     mockCoursesService = jasmine.createSpyObj<CoursesService>('CoursesService', ['getCourses', 'removeCourse']);
     mockModalService = jasmine.createSpyObj<ModalService>('ModalService', ['showModal']);
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+      ],
       declarations: [
         CoursesListComponent,
         CourseItemStubComponent,

@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 import { AddCourseComponent } from './add-course.component';
 
@@ -11,6 +13,13 @@ describe('AddCourseComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AddCourseComponent ],
       imports: [ ReactiveFormsModule ],
+      providers: [
+        {
+          provide: ActivatedRoute, useValue: {
+            params: of({ id: 'test' })
+          }
+        }
+      ]
     })
     .compileComponents();
   }));
