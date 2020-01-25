@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CourseHighlightDirective } from './courses-list/course-highlight.directive';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
     CourseHighlightDirective,
     OrderByPipe,
     AddCourseComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
