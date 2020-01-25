@@ -1,4 +1,4 @@
-import { AuthService } from './auth.service';
+import { AuthService, prefix } from './auth.service';
 import { getLocaleDayNames } from '@angular/common';
 
 describe('AuthService', () => {
@@ -35,5 +35,14 @@ describe('AuthService', () => {
     service.logout('USER');
     expect(localStorage.removeItem).toHaveBeenCalled();
   });
+
+  it('isAuthenticated() should wipe token from LocalStorage', () => {
+    const service: AuthService = new AuthService();
+    expect(service.isAuthenticated('USER')).toBe(false);
+    localStorage.setItem(prefix + 'USER', 'X'); // tight coupling
+    expect(service.isAuthenticated('USER')).toBe(true);
+  });
+
+
 
 });

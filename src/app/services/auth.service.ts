@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const prefix = 'logged';
+export const prefix = 'logged';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,5 +14,11 @@ export class AuthService {
 
   logout(userName: string) {
     localStorage.removeItem(prefix+userName);
+  }
+
+  isAuthenticated(userName: string) {
+    const token = localStorage.getItem(prefix+userName);
+    console.log("token", token);
+    return !!token;
   }
 }
