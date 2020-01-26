@@ -1,4 +1,4 @@
-import { AuthService, prefix } from './auth.service';
+import { AuthService, key } from './auth.service';
 import { getLocaleDayNames } from '@angular/common';
 
 describe('AuthService', () => {
@@ -27,22 +27,27 @@ describe('AuthService', () => {
   it('login() should store login info in LocalStorage', () => {
     const service: AuthService = new AuthService();
     service.login('USER', 'PASSWORD');
-    expect(localStorage.setItem).toHaveBeenCalled();
+    expect(localStorage.setItem).toHaveBeenCalled(); // not a real test
   });
   
   it('logout() should wipe token from LocalStorage', () => {
     const service: AuthService = new AuthService();
-    service.logout('USER');
-    expect(localStorage.removeItem).toHaveBeenCalled();
+    service.logout();
+    expect(localStorage.removeItem).toHaveBeenCalled(); // not a real test
   });
 
-  it('isAuthenticated() should wipe token from LocalStorage', () => {
+  it('isAuthenticated() should return user status', () => {
     const service: AuthService = new AuthService();
     expect(service.isAuthenticated('USER')).toBe(false);
-    localStorage.setItem(prefix + 'USER', 'X'); // tight coupling
+    localStorage.setItem(key, JSON.stringify({ userName: 'USER', token: 'X' })); // tight coupling
     expect(service.isAuthenticated('USER')).toBe(true);
   });
 
+  it('getUserInfo() should return stored user name', () => {
+    const service: AuthService = new AuthService();
+    localStorage.setItem(key, JSON.stringify({ userName: 'USER', token: 'X' })); // tight coupling
+    expect(service.getUserInfo().userName).toBe('USER');
+  });
 
 
 });

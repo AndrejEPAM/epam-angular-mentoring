@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 
-export const prefix = 'logged';
+export const key = 'loggedIn';
+export type UserLogin = {
+  userName: string,
+  token: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -9,16 +13,22 @@ export class AuthService {
   constructor() { }
 
   login(userName: string, password: string) {
-    localStorage.setItem(prefix+userName, '1');
+    localStorage.setItem(key, JSON.stringify({ userName, token: '1'}));
   }
 
-  logout(userName: string) {
-    localStorage.removeItem(prefix+userName);
+  logout() {
+    localStorage.removeItem(key);
   }
 
   isAuthenticated(userName: string) {
-    const token = localStorage.getItem(prefix+userName);
-    console.log("token", token);
-    return !!token;
+    const storedData = localStorage.getItem(key);
+    if (!storedData) { return false; }
+    const userLogin: UserLogin = JSON.parse(storedData);
+    return userLogin ? userLogin.userName === userName : false;
+  }
+
+  getUserInfo(): UserLogin {
+    const loggedInInfo = localStorage.getItem(key);
+    return loggedInInfo ? JSON.parse(loggedInInfo) : {}
   }
 }
