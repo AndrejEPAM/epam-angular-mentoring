@@ -26,9 +26,9 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log('button clicked');
+    console.log('button clicked', this.loginForm.value);
     const value = this.loginForm.value;
-    this.authService.login(value.userName, value.string);
+    this.authService.login(value.email, value.password);
   }
 
 }
