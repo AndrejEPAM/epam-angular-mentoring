@@ -38,9 +38,9 @@ describe('AuthService', () => {
 
   it('isAuthenticated() should return user status', () => {
     const service: AuthService = new AuthService();
-    expect(service.isAuthenticated('USER')).toBe(false);
+    expect(service.isAuthenticated()).toBe(false);
     localStorage.setItem(key, JSON.stringify({ userName: 'USER', token: 'X' })); // tight coupling
-    expect(service.isAuthenticated('USER')).toBe(true);
+    expect(service.isAuthenticated()).toBe(true);
   });
 
   it('getUserInfo() should return stored user name', () => {

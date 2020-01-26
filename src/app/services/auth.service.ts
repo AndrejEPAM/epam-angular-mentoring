@@ -20,11 +20,11 @@ export class AuthService {
     localStorage.removeItem(key);
   }
 
-  isAuthenticated(userName: string) {
+  isAuthenticated() {
     const storedData = localStorage.getItem(key);
     if (!storedData) { return false; }
     const userLogin: UserLogin = JSON.parse(storedData);
-    return userLogin ? userLogin.userName === userName : false;
+    return userLogin ? !!userLogin.userName : false;
   }
 
   getUserInfo(): UserLogin {
