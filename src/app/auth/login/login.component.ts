@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,6 +31,7 @@ export class LoginComponent {
     console.log('button clicked', this.loginForm.value);
     const value = this.loginForm.value;
     this.authService.login(value.email, value.password);
+    this.router.navigate(['/courses']);
   }
 
 }
