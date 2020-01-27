@@ -19,12 +19,14 @@
 
 .user {
   padding: 0 20px;
+  color: inherit;
 
   & > span { margin-left: 6px;}
 }
 
-.signing {
+.signout {
   padding: 0 20px;
+  cursor: pointer;
 
   & > span {
     margin-left: 6px;

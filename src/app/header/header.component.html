@@ -6,16 +6,14 @@
   </a>
 
   <div class="navbar__menu-points">
-    <div class="user">
+    <a class="user" routerLink="login">
       <img src="../../assets/ic-user.svg">
-      <span>User</span>
-    </div>
+      <span>Sign in</span>
+    </a>
 
-    <div class="signing">
-      <a routerLink="login">
-        <img src="../../assets/ic-exit.svg">
-        <span>Sign in</span>
-      </a>
-    </div>
+    <a class="signout" (click)="logout()">
+      <img src="../../assets/ic-exit.svg">
+      <span>Sign out</span>
+    </a>
   </div>
 </nav>
