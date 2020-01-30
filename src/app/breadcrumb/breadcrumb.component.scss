@@ -3,8 +3,17 @@
     background-color: #fff;
     margin-bottom: 20px;
 }
+nav {
+    text-align: left;
+    justify-content: left;
+}
 
-span {
+a {
+    display: inline;
     color: #868996;
     font-size: 14px;
+}
+a+a::before {
+    content: "/";
+    display: inline;
 }

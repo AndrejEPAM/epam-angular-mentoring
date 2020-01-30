@@ -1,3 +1,3 @@
 <nav class="navbar navbar-light">
-    <span><strong>Courses</strong></span>
+    <a *ngFor="let crumb of crumbs" [routerLink]="crumb.path || null"><strong>{{ crumb.title }}</strong></a>
 </nav>
